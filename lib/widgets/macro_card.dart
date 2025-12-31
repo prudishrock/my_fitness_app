@@ -63,4 +63,3 @@ class MacroCard extends StatelessWidget {
     );
   }
 }
-
