@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_fitness_app/pages/main_page.dart';
-import 'package:my_fitness_app/pages/meal_page.dart';
+import 'package:go_router/go_router.dart';
 
 class NavigationHelper {
   static void navigateToPage(
@@ -8,47 +7,43 @@ class NavigationHelper {
     // Eğer aynı sayfadaysak, navigation yapma
     if (index == currentIndex) return;
 
-    switch (index) {
-      case 0:
-        // Home (Main Page)
-        if (currentIndex != 0) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => const MainPage()),
-          );
-        }
-        break;
-      case 1:
-        // Exercises page - TODO: Create ExercisesPage
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const Scaffold(
-              body: Center(child: Text('Exercises Page')),
-            ),
-          ),
-        );
-        break;
-      case 2:
-        // Meals page
-        if (currentIndex != 2) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => const MealPage()),
-          );
-        }
-        break;
-      case 3:
-        // Profile page - TODO: Create ProfilePage
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const Scaffold(
-              body: Center(child: Text('Profile Page')),
-            ),
-          ),
-        );
-        break;
-    }
+    // Build sonrasında navigation yapmak için microtask kullan
+    Future.microtask(() {
+      if (!context.mounted) return;
+
+      switch (index) {
+        case 0:
+          // Home (Main Page)
+          if (currentIndex != 0) {
+            context.go('/');
+          }
+          break;
+        case 1:
+          // Exercises/Workout page
+          if (currentIndex != 1) {
+            context.go('/workout');
+          }
+          break;
+        case 2:
+          // Meals page
+          if (currentIndex != 2) {
+            context.go('/meals');
+          }
+          break;
+        case 3:
+          // Profile page
+          if (currentIndex != 3) {
+            context.go('/profile');
+          }
+          break;
+      }
+    });
+  }
+
+  static void navigateToHome(BuildContext context) {
+    Future.microtask(() {
+      if (!context.mounted) return;
+      context.go('/');
+    });
   }
 }

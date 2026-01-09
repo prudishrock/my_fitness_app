@@ -3,6 +3,8 @@ import 'package:my_fitness_app/models/nutrition_targets.dart';
 import 'package:my_fitness_app/models/nutrition_day_summary.dart';
 import 'package:my_fitness_app/models/meal.dart';
 import 'package:my_fitness_app/models/exercise.dart';
+import 'package:my_fitness_app/models/workout_program.dart';
+import 'package:my_fitness_app/models/recommended_workout.dart';
 
 // User Profile
 const dummyUserProfile = UserProfile(
@@ -215,5 +217,67 @@ const dummyExerciseLibrary = [
     name: 'Rowing Machine',
     primaryMuscle: ExerciseCategory.cardio,
     difficulty: ExerciseDifficulty.intermediate,
+  ),
+];
+
+// Workout Programs
+const dummyWorkoutPrograms = [
+  WorkoutProgram(
+    id: '1',
+    title: 'Push / Pull Destruction',
+    status: 'ACTIVE',
+    progressPercent: 75,
+    tags: ['Hypertrophy', 'Advanced'],
+    daysPerWeek: 4,
+    durationMins: 60,
+  ),
+  WorkoutProgram(
+    id: '2',
+    title: 'Full Body Conditioning',
+    status: 'PAUSED',
+    progressPercent: 30,
+    tags: ['Cardio'],
+    daysPerWeek: 3,
+    durationMins: 30,
+  ),
+  WorkoutProgram(
+    id: '3',
+    title: 'Strength Builder',
+    status: 'ACTIVE',
+    progressPercent: 50,
+    tags: ['Strength', 'Intermediate'],
+    daysPerWeek: 5,
+    durationMins: 75,
+  ),
+];
+
+// Recommended Workouts
+const dummyRecommendedWorkouts = [
+  RecommendedWorkout(
+    id: '1',
+    title: 'German Volume Training',
+    description: 'High volume method for mass gains.',
+    difficulty: WorkoutDifficulty.advanced,
+    details: '10x10 sets',
+    imageUrl:
+        'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400',
+  ),
+  RecommendedWorkout(
+    id: '2',
+    title: 'Push-Pull-Legs',
+    description: 'Classic split for aesthetics and size.',
+    difficulty: WorkoutDifficulty.intermediate,
+    details: '6 days/week',
+    imageUrl:
+        'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400',
+  ),
+  RecommendedWorkout(
+    id: '3',
+    title: 'Arnold Split',
+    description: 'Focus on chest/back & shoulders/arms.',
+    difficulty: WorkoutDifficulty.advanced,
+    details: '6 days/week',
+    imageUrl:
+        'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400',
   ),
 ];

@@ -43,7 +43,12 @@ class _MealPageState extends State<MealPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(Icons.arrow_back, color: Colors.white),
+                      InkWell(
+                        onTap: () {
+                          NavigationHelper.navigateToHome(context);
+                        },
+                        child: Icon(Icons.arrow_back, color: Colors.white),
+                      ),
                       Text(
                         'Meals',
                         style: TextStyle(
